@@ -297,7 +297,7 @@
   }
   .point-row{
     display:grid;
-    grid-template-columns:20px 22px 1fr auto auto auto auto 18px;
+    grid-template-columns:20px 22px auto 1fr auto auto auto auto 18px;
     align-items:center;
     gap:12px;
     padding:11px 14px;
@@ -308,6 +308,18 @@
   .point-row:hover{background:var(--surface-2);}
   .chev{color:var(--ink-faint); transition:transform .15s ease; font-size:11px;}
   .point.open .chev{transform:rotate(90deg);}
+  .p-id{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    font-weight:600;
+    color:var(--ink-faint);
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:4px;
+    padding:2px 6px;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
   .p-title{font-size:14px; font-weight:500; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   .tag{
     font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;
@@ -479,6 +491,7 @@
   @media (max-width:720px){
     .stats{grid-template-columns:repeat(3,1fr);}
     .point-row{grid-template-columns:16px 20px 1fr auto; }
+    .point-row .p-id{display:none;}
     .point-row .tag, .point-row .status-pill, .point-row .acoes-count{display:none;}
     h1.title{font-size:24px;}
   }
@@ -744,6 +757,29 @@
   }
   function savedOf(p){ return state.saved[p.id] || p; }
 
+  /* ---------------- geração de id sequencial (pNN) para novos pontos ----------------
+     Mantém o mesmo padrão curto e legível dos 46 pontos originais (p01..p46) em vez
+     de um id longo e aleatório — mais fácil de citar em conversa/reunião. */
+  function nextPointId(){
+    var maxN = 0, width = 2;
+    state.points.forEach(function(p){
+      var m = /^p(\d+)$/i.exec(p.id || "");
+      if(m){
+        var n = parseInt(m[1], 10);
+        if(n > maxN){ maxN = n; width = m[1].length; }
+      }
+    });
+    var next = maxN + 1;
+    var s = String(next);
+    while(s.length < width) s = "0" + s;
+    var candidate = "p" + s;
+    // evita colisão no raríssimo caso de um id manual/importado já usar esse número
+    while(state.points.some(function(p){ return p.id === candidate; })){
+      next++; s = String(next); while(s.length < width) s = "0" + s; candidate = "p" + s;
+    }
+    return candidate;
+  }
+
   /* ---------------- mapeamento linha do banco <-> objeto do app ---------------- */
   function rowToPoint(row){
     return {
@@ -860,6 +896,7 @@
     html += '<button type="button" class="point-row" data-role="toggle" aria-expanded="'+(isOpen?'true':'false')+'">';
     html += '<span class="chev">&#9656;</span>';
     html += '<span class="avatar" title="Relatado por '+escAttr(relator)+'" style="color:var(--p-'+pk+');background:var(--p-'+pk+'-soft)">'+pessoaIniciais(relator)+'</span>';
+    html += '<span class="p-id" title="ID do ponto">'+escHtml(p.id)+'</span>';
     html += '<span class="p-title">'+escHtml(p.titulo)+'</span>';
     html += '<span class="tag" style="color:var(--cat-'+ci+');background:var(--cat-'+ci+'-soft)">'+escHtml(p.categoria)+'</span>';
     html += '<span class="badge '+priClass(pri)+'">'+pri+'</span>';
@@ -1196,7 +1233,7 @@
       notas: "",
       acoes: []
     };
-    var newId = "p-" + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+    var newId = nextPointId();
     novo.id = newId;
     state.points.push(novo);
     state.saved[novo.id] = savedSnapshot(novo);
