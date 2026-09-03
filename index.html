@@ -1,0 +1,1345 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fórum Pentago — Painel de Pontos &amp; Ações</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232C4A7C'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Georgia,serif'%3EP%3C/text%3E%3C/svg%3E">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --bg:#F1F3F7;
+    --surface:#FFFFFF;
+    --surface-2:#F8F9FC;
+    --border:#DCE0EA;
+    --border-strong:#C3C9D9;
+    --ink:#171B26;
+    --ink-muted:#5B6275;
+    --ink-faint:#8991A6;
+    --accent:#2C4A7C;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#E4EBF6;
+    --accent-2:#0F766E;
+    --accent-2-soft:#E1F2F0;
+
+    --crit:#A62F24; --crit-soft:#FBEAE9;
+    --high:#A0560A; --high-soft:#FBEEDD;
+    --med:#836A0A;  --med-soft:#FAF3D9;
+    --low:#3F6A52;  --low-soft:#E7F1EC;
+
+    --cat-0:#2C4A7C; --cat-0-soft:#E4EBF6;
+    --cat-1:#7B4B6A; --cat-1-soft:#F3E7EE;
+    --cat-2:#0F766E; --cat-2-soft:#E1F2F0;
+    --cat-3:#836A0A; --cat-3-soft:#FAF3D9;
+    --cat-4:#A0560A; --cat-4-soft:#FBEEDD;
+    --cat-5:#5B4B9E; --cat-5-soft:#EBE7F7;
+    --cat-6:#556072; --cat-6-soft:#E9ECF1;
+    --cat-7:#8C2F3B; --cat-7-soft:#F6E5E7;
+    --cat-8:#4F7332; --cat-8-soft:#EAF1E2;
+
+    --p-ivan:#2C4A7C;   --p-ivan-soft:#E4EBF6;
+    --p-gerson:#6E4FA6; --p-gerson-soft:#ECE7F7;
+    --p-lorena:#B23A6E; --p-lorena-soft:#F7E5ED;
+    --p-jhonny:#1E7A63; --p-jhonny-soft:#E1F1EC;
+    --p-rosana:#8A5A28; --p-rosana-soft:#F3EADC;
+    --p-tbd:#8991A6;    --p-tbd-soft:#EAECF1;
+
+    --shadow: 0 1px 2px rgba(23,27,38,.06), 0 8px 24px -12px rgba(23,27,38,.18);
+    --radius: 10px;
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#11151F;
+      --surface:#171C29;
+      --surface-2:#1D2332;
+      --border:#2A3244;
+      --border-strong:#3A4459;
+      --ink:#E7EAF2;
+      --ink-muted:#9AA2B8;
+      --ink-faint:#6C7690;
+      --accent:#82A5D8;
+      --accent-ink:#0E1420;
+      --accent-soft:#22314A;
+      --accent-2:#57C2B5;
+      --accent-2-soft:#16302C;
+
+      --crit:#E3897E; --crit-soft:#3A1F1E;
+      --high:#E2A467; --high-soft:#3A2A16;
+      --med:#D8C069;  --med-soft:#362C14;
+      --low:#8FC0A2;  --low-soft:#1D3226;
+
+      --cat-0:#8FB0E0; --cat-0-soft:#20304A;
+      --cat-1:#D4A6C2; --cat-1-soft:#3A2732;
+      --cat-2:#66CFC1; --cat-2-soft:#153029;
+      --cat-3:#D8C069; --cat-3-soft:#332B12;
+      --cat-4:#E2A467; --cat-4-soft:#352712;
+      --cat-5:#B3A6E6; --cat-5-soft:#2A2444;
+      --cat-6:#AEB9CC; --cat-6-soft:#242B38;
+      --cat-7:#E29AA3; --cat-7-soft:#3A2226;
+      --cat-8:#A8CB8A; --cat-8-soft:#26311C;
+
+      --p-ivan:#8FB0E0;   --p-ivan-soft:#20304A;
+      --p-gerson:#C3ADEE; --p-gerson-soft:#2B2444;
+      --p-lorena:#E896B8; --p-lorena-soft:#3A2530;
+      --p-jhonny:#7FCDB5; --p-jhonny-soft:#173229;
+      --p-rosana:#D3A467; --p-rosana-soft:#352A16;
+      --p-tbd:#6C7690;    --p-tbd-soft:#232A38;
+
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#11151F;
+    --surface:#171C29;
+    --surface-2:#1D2332;
+    --border:#2A3244;
+    --border-strong:#3A4459;
+    --ink:#E7EAF2;
+    --ink-muted:#9AA2B8;
+    --ink-faint:#6C7690;
+    --accent:#82A5D8;
+    --accent-ink:#0E1420;
+    --accent-soft:#22314A;
+    --accent-2:#57C2B5;
+    --accent-2-soft:#16302C;
+
+    --crit:#E3897E; --crit-soft:#3A1F1E;
+    --high:#E2A467; --high-soft:#3A2A16;
+    --med:#D8C069;  --med-soft:#362C14;
+    --low:#8FC0A2;  --low-soft:#1D3226;
+
+    --cat-0:#8FB0E0; --cat-0-soft:#20304A;
+    --cat-1:#D4A6C2; --cat-1-soft:#3A2732;
+    --cat-2:#66CFC1; --cat-2-soft:#153029;
+    --cat-3:#D8C069; --cat-3-soft:#332B12;
+    --cat-4:#E2A467; --cat-4-soft:#352712;
+    --cat-5:#B3A6E6; --cat-5-soft:#2A2444;
+    --cat-6:#AEB9CC; --cat-6-soft:#242B38;
+    --cat-7:#E29AA3; --cat-7-soft:#3A2226;
+    --cat-8:#A8CB8A; --cat-8-soft:#26311C;
+
+    --p-ivan:#8FB0E0;   --p-ivan-soft:#20304A;
+    --p-gerson:#C3ADEE; --p-gerson-soft:#2B2444;
+    --p-lorena:#E896B8; --p-lorena-soft:#3A2530;
+    --p-jhonny:#7FCDB5; --p-jhonny-soft:#173229;
+    --p-rosana:#D3A467; --p-rosana-soft:#352A16;
+    --p-tbd:#6C7690;    --p-tbd-soft:#232A38;
+
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size:14.5px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif; text-wrap:balance; margin:0;}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums;}
+  button{font-family:inherit;}
+  input,select,textarea{font-family:inherit; font-size:inherit; color:inherit;}
+  ::selection{background:var(--accent-soft); color:var(--ink);}
+  a{color:var(--accent);}
+
+  /* ---------- shell ---------- */
+  .shell{max-width:1180px; margin:0 auto; padding:0 24px 80px;}
+
+  header.top{
+    padding:36px 0 20px;
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    font-weight:600;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);}
+  h1.title{font-size:32px; font-weight:600; color:var(--ink); letter-spacing:-.01em;}
+  .meta-row{
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    align-items:baseline;
+  }
+  .meta-field{display:flex; flex-direction:column; gap:3px;}
+  .meta-label{font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); font-weight:600;}
+  .meta-value{
+    font-size:14px;
+    color:var(--ink-muted);
+    border:1px solid transparent;
+    border-radius:6px;
+    padding:2px 6px;
+    margin-left:-6px;
+    cursor:text;
+    min-width:40px;
+  }
+  .meta-value:hover{border-color:var(--border);}
+  .meta-value:focus{outline:none; border-color:var(--accent); background:var(--surface); color:var(--ink);}
+
+  .note-strip{
+    margin-top:16px;
+    padding:10px 14px;
+    background:var(--accent-soft);
+    border-radius:8px;
+    font-size:12.5px;
+    color:var(--ink-muted);
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .note-strip b{color:var(--ink); font-weight:600;}
+
+  /* ---------- stats ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:10px;
+    margin:22px 0 26px;
+  }
+  .stat{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:12px 14px;
+  }
+  .stat .n{font-family:'IBM Plex Mono', monospace; font-size:22px; font-weight:600; line-height:1;}
+  .stat .l{font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; margin-top:6px;}
+  .stat.crit .n{color:var(--crit);}
+  .stat.high .n{color:var(--high);}
+  .stat.med .n{color:var(--med);}
+  .stat.done .n{color:var(--low);}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    padding:12px 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    border-bottom:1px solid var(--border);
+    margin-bottom:18px;
+  }
+  .toolbar select, .toolbar input[type=search]{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:7px 10px;
+    font-size:13px;
+    color:var(--ink);
+  }
+  .toolbar input[type=search]{min-width:200px;}
+  .toolbar select:focus, .toolbar input:focus{outline:2px solid var(--accent); outline-offset:1px;}
+  .group-toggle{
+    display:flex; border:1px solid var(--border); border-radius:7px; overflow:hidden;
+  }
+  .group-toggle button{
+    border:none; background:var(--surface); color:var(--ink-muted);
+    padding:7px 12px; font-size:13px; cursor:pointer;
+  }
+  .group-toggle button.active{background:var(--accent); color:var(--accent-ink); font-weight:600;}
+  .spacer{flex:1;}
+  .btn-primary{
+    background:var(--accent); color:var(--accent-ink); border:none;
+    padding:8px 14px; border-radius:7px; font-size:13px; font-weight:600;
+    cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn-primary:hover{filter:brightness(1.08);}
+  .btn-ghost{
+    background:transparent; color:var(--ink-muted); border:1px solid var(--border);
+    padding:7px 12px; border-radius:7px; font-size:12.5px; cursor:pointer;
+  }
+  .btn-ghost:hover{border-color:var(--border-strong); color:var(--ink);}
+  button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+
+  /* ---------- groups ---------- */
+  .group{margin-bottom:26px;}
+  .group-head{
+    display:flex; align-items:center; gap:10px;
+    padding:6px 2px 10px;
+  }
+  .group-head .swatch{width:9px;height:9px;border-radius:2px;}
+  .group-head h2{font-size:16px; font-weight:600; color:var(--ink);}
+  .group-head .count{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-faint);
+    background:var(--surface-2); border:1px solid var(--border); border-radius:20px; padding:1px 8px;
+  }
+
+  .list{display:flex; flex-direction:column; gap:7px;}
+
+  /* ---------- point card ---------- */
+  .point{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .point-row{
+    display:grid;
+    grid-template-columns:20px 22px 1fr auto auto auto auto 18px;
+    align-items:center;
+    gap:12px;
+    padding:11px 14px;
+    cursor:pointer;
+    width:100%; border:none; background:none; font:inherit; color:inherit;
+    text-align:left; margin:0; appearance:none; -webkit-appearance:none;
+  }
+  .point-row:hover{background:var(--surface-2);}
+  .chev{color:var(--ink-faint); transition:transform .15s ease; font-size:11px;}
+  .point.open .chev{transform:rotate(90deg);}
+  .p-title{font-size:14px; font-weight:500; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .tag{
+    font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;
+  }
+  .avatar{
+    width:22px; height:22px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace; font-size:9.5px; font-weight:600;
+    flex-shrink:0;
+  }
+  .avatar-lg{width:26px;height:26px;font-size:10.5px;}
+  .relator-field{display:flex; align-items:center; gap:8px;}
+  .badge{
+    font-size:11px; font-weight:600; padding:3px 9px; border-radius:5px; white-space:nowrap;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .badge.crit{color:var(--crit); background:var(--crit-soft);}
+  .badge.high{color:var(--high); background:var(--high-soft);}
+  .badge.med{color:var(--med); background:var(--med-soft);}
+  .badge.low{color:var(--low); background:var(--low-soft);}
+  .status-pill{
+    font-size:11px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap;
+    border:1px solid var(--border-strong); color:var(--ink-muted);
+    display:flex; align-items:center; gap:5px;
+  }
+  .status-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);}
+  .status-pill.progress{color:var(--accent); border-color:var(--accent);}
+  .status-pill.progress .dot{background:var(--accent);}
+  .status-pill.done{color:var(--low); border-color:var(--low);}
+  .status-pill.done .dot{background:var(--low);}
+  .acoes-count{font-size:11px; color:var(--ink-faint); font-family:'IBM Plex Mono', monospace; white-space:nowrap;}
+
+  .point-body{
+    display:none;
+    padding:2px 16px 18px 46px;
+    border-top:1px solid var(--border);
+  }
+  .point.open .point-body{display:block;}
+
+  .body-grid{display:grid; grid-template-columns:1.5fr 1fr; gap:22px; padding-top:14px;}
+  @media (max-width:820px){ .body-grid{grid-template-columns:1fr;} }
+
+  .desc{font-size:13.5px; color:var(--ink); line-height:1.6;}
+  .desc textarea{width:100%; border:1px solid transparent; border-radius:6px; background:transparent; resize:vertical; padding:4px 6px; margin:-4px 0 0 -6px; min-height:44px; color:var(--ink); font-size:13.5px; line-height:1.6;}
+  .desc textarea:hover{border-color:var(--border);}
+  .desc textarea:focus{outline:none; border-color:var(--accent); background:var(--surface-2);}
+
+  .evidence{
+    margin-top:12px;
+    padding:10px 12px;
+    background:var(--surface-2);
+    border-left:2px solid var(--accent-2);
+    border-radius:0 6px 6px 0;
+    font-size:12.5px;
+    color:var(--ink-muted);
+    font-style:italic;
+  }
+  .evidence b{font-style:normal; font-weight:600; color:var(--accent-2); text-transform:uppercase; font-size:10.5px; letter-spacing:.05em; display:block; margin-bottom:4px; font-family:'IBM Plex Sans',sans-serif;}
+
+  .field-row{display:flex; gap:16px; margin-top:16px; flex-wrap:wrap;}
+  .field{display:flex; flex-direction:column; gap:5px;}
+  .field label{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:600;}
+  .field select{
+    background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:6px 8px; font-size:12.5px; min-width:120px;
+  }
+
+  .notas-field{margin-top:16px;}
+  .notas-field textarea{
+    width:100%; min-height:50px; background:var(--surface-2); border:1px solid var(--border); border-radius:6px;
+    padding:8px 10px; font-size:12.5px; color:var(--ink); resize:vertical;
+  }
+  .notas-field textarea:focus{outline:none; border-color:var(--accent);}
+
+  .acoes-block{border-top:1px solid var(--border); padding-top:12px;}
+  @media (min-width:821px){ .acoes-block{border-top:none; padding-top:0; border-left:1px solid var(--border); padding-left:22px;} }
+  .acoes-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .acoes-head h4{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:600;}
+  .acao{
+    display:grid; grid-template-columns:16px 1fr; gap:8px; padding:8px 0; border-bottom:1px solid var(--border);
+  }
+  .acao:last-of-type{border-bottom:none;}
+  .acao input[type=checkbox]{margin-top:3px; accent-color:var(--low); width:14px; height:14px;}
+  .acao-texto{
+    width:100%; border:none; background:transparent; font-size:12.5px; color:var(--ink); padding:2px 4px; border-radius:4px;
+  }
+  .acao-texto.done{color:var(--ink-faint); text-decoration:line-through;}
+  .acao-texto:hover{background:var(--surface-2);}
+  .acao-texto:focus{outline:1px solid var(--accent); background:var(--surface-2);}
+  .acao-meta{display:flex; gap:8px; margin-top:4px;}
+  .acao-meta input{
+    border:1px solid var(--border); background:var(--surface); border-radius:5px; padding:4px 7px; font-size:11.5px; color:var(--ink-muted);
+  }
+  .acao-meta input[type=text]{width:110px;}
+  .acao-meta input[type=date]{width:128px; font-family:'IBM Plex Mono',monospace;}
+  .acao-meta input:focus{outline:none; border-color:var(--accent); color:var(--ink);}
+  .acao-del{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:14px;padding:2px 6px;line-height:1;}
+  .acao-del:hover{color:var(--crit);}
+  .add-acao{
+    margin-top:4px; background:none; border:1px dashed var(--border-strong); color:var(--ink-muted);
+    border-radius:6px; padding:6px 10px; font-size:12px; cursor:pointer; width:100%; text-align:left;
+  }
+  .add-acao:hover{border-color:var(--accent); color:var(--accent);}
+
+  .point-footer{
+    margin-top:18px; padding-top:14px; border-top:1px solid var(--border);
+    display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;
+  }
+  .save-status{font-size:11.5px; color:var(--ink-faint); display:flex; align-items:center; gap:6px;}
+  .save-status .dirty-dot{width:7px;height:7px;border-radius:50%;background:var(--high); flex-shrink:0;}
+  .save-status.ok{color:var(--low);}
+  .footer-actions{display:flex; gap:10px; align-items:center;}
+  .del-point{background:none;border:none;color:var(--ink-faint);font-size:11.5px;cursor:pointer;padding:4px 6px;}
+  .del-point:hover{color:var(--crit);}
+  .save-btn{
+    background:var(--accent); color:var(--accent-ink); border:none;
+    padding:8px 16px; border-radius:7px; font-size:12.5px; font-weight:600;
+    cursor:pointer;
+  }
+  .save-btn:hover{filter:brightness(1.08);}
+  .save-btn[disabled]{
+    background:var(--surface-2); color:var(--ink-faint); border:1px solid var(--border);
+    cursor:default; font-weight:500;
+  }
+  .dirty-dot-cell{display:flex; align-items:center; justify-content:center;}
+  .dirty-dot-cell .dirty-dot{width:7px;height:7px;border-radius:50%;background:var(--high);}
+
+  /* ---------- new point form ---------- */
+  .new-point-form{
+    background:var(--surface); border:1px dashed var(--border-strong); border-radius:var(--radius);
+    padding:16px; margin-bottom:22px; display:none;
+  }
+  .new-point-form.open{display:block;}
+  .new-point-form h3{font-size:14px; margin-bottom:12px;}
+  .npf-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .npf-grid .full{grid-column:1/-1;}
+  .npf-grid label{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); font-weight:600; display:block; margin-bottom:5px;}
+  .npf-grid input, .npf-grid select, .npf-grid textarea{
+    width:100%; background:var(--surface-2); border:1px solid var(--border); border-radius:6px; padding:8px 10px; font-size:13px;
+  }
+  .npf-grid textarea{min-height:60px; resize:vertical;}
+  .npf-actions{display:flex; gap:10px; margin-top:14px; justify-content:flex-end;}
+
+  .empty{
+    text-align:center; padding:60px 20px; color:var(--ink-faint); font-size:13.5px;
+  }
+
+  .footer-note{
+    margin-top:34px; padding-top:18px; border-top:1px solid var(--border);
+    font-size:11.5px; color:var(--ink-faint); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  .sync-flag{
+    font-size:11px; color:var(--ink-faint); display:flex; align-items:center; gap:6px;
+  }
+  .sync-flag .dot{width:6px;height:6px;border-radius:50%;background:var(--low);}
+  .sync-flag.offline .dot{background:var(--high);}
+
+  .theme-toggle{
+    display:flex; align-items:center; gap:6px;
+    background:var(--surface); border:1px solid var(--border); color:var(--ink-muted);
+    border-radius:20px; padding:5px 12px 5px 10px; font-size:11.5px; font-weight:600;
+    cursor:pointer;
+  }
+  .theme-toggle:hover{border-color:var(--border-strong); color:var(--ink);}
+  .theme-toggle .theme-icon{font-size:12.5px; line-height:1;}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+
+  @media (max-width:720px){
+    .stats{grid-template-columns:repeat(3,1fr);}
+    .point-row{grid-template-columns:16px 20px 1fr auto; }
+    .point-row .tag, .point-row .status-pill, .point-row .acoes-count{display:none;}
+    h1.title{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="top">
+    <div class="eyebrow"><span class="dot"></span> Fórum Estratégico &middot; Pentago</div>
+    <h1 class="title">Painel de Pontos &amp; Ações</h1>
+    <div class="meta-row">
+      <div class="meta-field">
+        <span class="meta-label">Participantes</span>
+        <span class="meta-value" id="meta-participantes" contenteditable="true" spellcheck="false">Ivan, Gerson, Lorena, Jhonny, Rosana</span>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Data da reunião</span>
+        <span class="meta-value mono" id="meta-data" contenteditable="true" spellcheck="false">a confirmar — fim de ago/2026</span>
+      </div>
+      <div class="meta-field">
+        <span class="meta-label">Origem</span>
+        <span class="meta-value">transcrição da chamada + anotações de Ivan</span>
+      </div>
+      <div class="spacer"></div>
+      <button type="button" class="theme-toggle" id="theme-toggle" title="Alternar entre modo claro, escuro e automático"></button>
+      <span class="sync-flag" id="sync-flag"><span class="dot"></span> conectando…</span>
+    </div>
+    <div class="note-strip">
+      <span>&#9998;</span>
+      <span><b>Como usar:</b> importância, urgência e quem relatou cada ponto já vêm com uma sugestão inicial a partir da conversa — ajustem à vontade. A prioridade é calculada automaticamente a partir de importância e urgência. Clique em um ponto para abri-lo — só um fica aberto por vez —, edite os campos e as ações, e clique em <b>Salvar alterações</b> dentro do próprio ponto para gravar. Use <b>+ Novo ponto</b> para incluir o que estiver no seu caderno.</span>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <div class="toolbar">
+    <div class="group-toggle" id="group-toggle">
+      <button data-g="prioridade" class="active">Agrupar por prioridade</button>
+      <button data-g="categoria">Agrupar por categoria</button>
+      <button data-g="pessoa">Agrupar por pessoa</button>
+    </div>
+    <select id="f-categoria"><option value="">Todas as categorias</option></select>
+    <select id="f-pessoa"><option value="">Quem relatou: todos</option></select>
+    <select id="f-status">
+      <option value="">Todos os status</option>
+      <option>Não iniciado</option>
+      <option>Em andamento</option>
+      <option>Concluído</option>
+    </select>
+    <select id="f-origem">
+      <option value="">Toda origem</option>
+      <option>Transcrição</option>
+      <option>Caderno Ivan</option>
+      <option>Ambos</option>
+    </select>
+    <input type="search" id="f-busca" placeholder="Buscar por palavra…">
+    <div class="spacer"></div>
+    <button class="btn-ghost" id="export-csv">Exportar dados (CSV)</button>
+    <button class="btn-primary" id="open-new">+ Novo ponto</button>
+  </div>
+
+  <form class="new-point-form" id="new-point-form">
+    <h3>Novo ponto (da sua anotação)</h3>
+    <div class="npf-grid">
+      <div>
+        <label>Categoria</label>
+        <select id="np-categoria"></select>
+      </div>
+      <div>
+        <label>Origem</label>
+        <select id="np-origem">
+          <option>Caderno Ivan</option>
+          <option>Transcrição</option>
+          <option>Ambos</option>
+        </select>
+      </div>
+      <div>
+        <label>Quem relatou</label>
+        <select id="np-relator"></select>
+      </div>
+      <div class="full">
+        <label>Título</label>
+        <input type="text" id="np-titulo" placeholder="Ex.: Falta de contrato de manutenção pós-entrega" required>
+      </div>
+      <div class="full">
+        <label>Descrição</label>
+        <textarea id="np-descricao" placeholder="Contexto, quem levantou o ponto, por que importa…"></textarea>
+      </div>
+      <div>
+        <label>Importância</label>
+        <select id="np-importancia"><option>Alta</option><option selected>Média</option><option>Baixa</option></select>
+      </div>
+      <div>
+        <label>Urgência</label>
+        <select id="np-urgencia"><option>Alta</option><option selected>Média</option><option>Baixa</option></select>
+      </div>
+    </div>
+    <div class="npf-actions">
+      <button type="button" class="btn-ghost" id="np-cancel">Cancelar</button>
+      <button type="submit" class="btn-primary">Adicionar ponto</button>
+    </div>
+  </form>
+
+  <main id="main"></main>
+
+  <div class="footer-note">
+    <span>Painel colaborativo — as alterações de qualquer pessoa com o link ficam salvas e visíveis para todos, em tempo real.</span>
+    <span id="last-sync"></span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  /* ---------------- acesso ao Supabase via REST puro (fetch) ----------------
+     Sem biblioteca externa de propósito: algumas redes corporativas e
+     bloqueadores de anúncio bloqueiam CDNs genéricos (cdn.jsdelivr.net etc.),
+     o que quebrava o carregamento da página inteira em silêncio antes desta
+     versão. Usando só fetch() nativo do navegador contra a API REST
+     (PostgREST) do próprio projeto Supabase, a página não depende de mais
+     nenhum host externo além do próprio banco de dados. */
+  var SUPABASE_URL = "https://qzyetypxwyycufspdbqk.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_NCWNz9-VLG4v_MGAxvEuOQ_uSTsmyWN";
+
+  function sbFetch(path, opts){
+    opts = opts || {};
+    var headers = {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json'
+    };
+    if(opts.prefer) headers['Prefer'] = opts.prefer;
+    return fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      method: opts.method || 'GET',
+      headers: headers,
+      body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined
+    }).then(function(res){
+      if(res.status === 204){ return {data:null, error:null}; }
+      return res.text().then(function(txt){
+        var parsed = null;
+        if(txt){ try{ parsed = JSON.parse(txt); }catch(e){ parsed = txt; } }
+        if(!res.ok){
+          var msg = (parsed && parsed.message) ? parsed.message : (typeof parsed==='string' ? parsed : ('HTTP '+res.status));
+          return {data:null, error:{message: msg}};
+        }
+        var data = parsed;
+        if(opts.single && Array.isArray(data)) data = data.length ? data[0] : null;
+        return {data:data, error:null};
+      });
+    }).catch(function(err){
+      return {data:null, error:{message: err && err.message ? err.message : String(err)}};
+    });
+  }
+
+  /* ---------------- diagnóstico de erros em tela ----------------
+     Se algo quebrar, mostra um aviso visível em vez de falhar em silêncio. */
+  function showErrorBanner(msg){
+    try{
+      var el = document.getElementById('err-banner');
+      if(!el){
+        el = document.createElement('div');
+        el.id = 'err-banner';
+        el.style.cssText = 'position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;background:#A62F24;color:#fff;padding:10px 14px;border-radius:8px;font:12.5px/1.4 -apple-system,sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.3);max-height:40vh;overflow:auto;white-space:pre-wrap;';
+        document.body.appendChild(el);
+      }
+      el.textContent = 'Erro no painel — copie e envie esta mensagem: ' + msg;
+    }catch(e2){}
+  }
+  window.addEventListener('error', function(e){
+    showErrorBanner((e && e.message) || 'erro desconhecido');
+  });
+  window.addEventListener('unhandledrejection', function(e){
+    var r = e && e.reason;
+    showErrorBanner('promise rejeitada — ' + (r && r.message ? r.message : String(r)));
+  });
+
+  /* ---------------- tema claro/escuro ---------------- */
+  var THEME_MODES = ['auto', 'light', 'dark'];
+  var THEME_LABELS = {auto:'Automático', light:'Claro', dark:'Escuro'};
+  var THEME_ICONS = {auto:'&#9680;', light:'&#9728;&#65039;', dark:'&#127769;'};
+
+  function getStoredTheme(){
+    try{
+      var v = localStorage.getItem('pentago-theme');
+      return THEME_MODES.indexOf(v)>-1 ? v : 'auto';
+    }catch(e){ return 'auto'; }
+  }
+
+  function applyTheme(mode){
+    var root = document.documentElement;
+    if(mode==='light'){ root.dataset.theme = 'light'; root.style.colorScheme = 'light'; }
+    else if(mode==='dark'){ root.dataset.theme = 'dark'; root.style.colorScheme = 'dark'; }
+    else { delete root.dataset.theme; root.style.colorScheme = ''; }
+    try{ localStorage.setItem('pentago-theme', mode); }catch(e){}
+    var btn = document.getElementById('theme-toggle');
+    if(btn){
+      btn.innerHTML = '<span class="theme-icon">'+THEME_ICONS[mode]+'</span>Tema: '+THEME_LABELS[mode];
+      btn.setAttribute('aria-label', 'Tema atual: '+THEME_LABELS[mode]+' — clique para trocar');
+    }
+  }
+
+  document.getElementById('theme-toggle').addEventListener('click', function(){
+    var cur = getStoredTheme();
+    var next = THEME_MODES[(THEME_MODES.indexOf(cur)+1) % THEME_MODES.length];
+    applyTheme(next);
+  });
+
+  applyTheme(getStoredTheme());
+
+  /* ---------------- categorias ---------------- */
+  var CATEGORIAS = [
+    "Governança & Conhecimento",
+    "Pessoas & Cultura",
+    "Operação & SLA",
+    "Financeiro & Contratos",
+    "Comercial & Produto",
+    "Tecnologia & IA",
+    "Infraestrutura & Ferramentas",
+    "Estratégia & Identidade",
+    "Governança do Fórum"
+  ];
+  function catIndex(nome){ var i = CATEGORIAS.indexOf(nome); return i<0?0:i; }
+
+  /* ---------------- pessoas ---------------- */
+  var PESSOAS = ["Ivan","Gerson","Lorena","Jhonny","Rosana"];
+  var PESSOA_KEY = {"Ivan":"ivan","Gerson":"gerson","Lorena":"lorena","Jhonny":"jhonny","Rosana":"rosana"};
+  function pessoaKey(nome){ return PESSOA_KEY[nome] || "tbd"; }
+  function pessoaIniciais(nome){
+    if(!nome || nome==="A definir") return "?";
+    return nome.slice(0,2).toUpperCase();
+  }
+
+  var PRI_MATRIX = {
+    "Alta|Alta":"Crítica", "Alta|Média":"Alta", "Alta|Baixa":"Média",
+    "Média|Alta":"Alta", "Média|Média":"Média", "Média|Baixa":"Baixa",
+    "Baixa|Alta":"Média", "Baixa|Média":"Baixa", "Baixa|Baixa":"Baixa"
+  };
+  var PRI_RANK = {"Crítica":4,"Alta":3,"Média":2,"Baixa":1};
+  function prioridadeDe(imp, urg){ return PRI_MATRIX[imp+"|"+urg] || "Média"; }
+  function priClass(p){ return p==="Crítica"?"crit":p==="Alta"?"high":p==="Média"?"med":"low"; }
+
+  /* ---------------- estado ---------------- */
+  var state = {
+    points: [],
+    meta: {titulo:"Painel de Pontos & Ações", participantes:"Ivan, Gerson, Lorena, Jhonny, Rosana", dataReuniao:"a confirmar — fim de ago/2026"},
+    groupBy: "prioridade",
+    filters:{categoria:"", pessoa:"", status:"", origem:"", busca:""},
+    openId: null,
+    dirty: {},
+    saved: {}, // snapshot dos campos "confirmados" (última gravação) — usado para
+               // agrupar/ordenar/filtrar, para que o ponto só mude de lugar depois
+               // que o usuário clicar em "Salvar alterações", não a cada edição
+    online: false,
+    _pointerActive: false,
+    _renderPending: false,
+    _lastPointsJSON: null
+  };
+
+  function savedSnapshot(p){
+    return {categoria:p.categoria, relator:p.relator, importancia:p.importancia, urgencia:p.urgencia, status:p.status, origem:p.origem, ordem:p.ordem};
+  }
+  function savedOf(p){ return state.saved[p.id] || p; }
+
+  /* ---------------- mapeamento linha do banco <-> objeto do app ---------------- */
+  function rowToPoint(row){
+    return {
+      id: row.id,
+      titulo: row.titulo || "",
+      descricao: row.descricao || "",
+      evidencia: row.evidencia || "",
+      categoria: row.categoria || CATEGORIAS[0],
+      relator: row.relator || "A definir",
+      importancia: row.importancia || "Média",
+      urgencia: row.urgencia || "Média",
+      status: row.status || "Não iniciado",
+      origem: row.origem || "Transcrição",
+      ordem: (typeof row.ordem === 'number') ? row.ordem : 999,
+      notas: row.notas || "",
+      acoes: Array.isArray(row.acoes) ? row.acoes : []
+    };
+  }
+  function pointToRow(p){
+    return {
+      titulo: p.titulo, descricao: p.descricao, evidencia: p.evidencia,
+      categoria: p.categoria, relator: p.relator, importancia: p.importancia,
+      urgencia: p.urgencia, status: p.status, origem: p.origem, ordem: p.ordem,
+      notas: p.notas, acoes: p.acoes
+    };
+  }
+
+  /* ---------------- render helpers ---------------- */
+  function computeStats(points){
+    var s = {total:points.length, crit:0, high:0, med:0, low:0, done:0};
+    points.forEach(function(p){
+      var g = savedOf(p);
+      var pri = prioridadeDe(g.importancia, g.urgencia);
+      if(pri==="Crítica") s.crit++;
+      else if(pri==="Alta") s.high++;
+      else if(pri==="Média") s.med++;
+      else s.low++;
+      if(g.status==="Concluído") s.done++;
+    });
+    return s;
+  }
+
+  function renderStats(){
+    var s = computeStats(state.points);
+    var pct = s.total ? Math.round(100*s.done/s.total) : 0;
+    document.getElementById('stats').innerHTML =
+      '<div class="stat"><div class="n mono">'+s.total+'</div><div class="l">Pontos mapeados</div></div>'+
+      '<div class="stat crit"><div class="n mono">'+s.crit+'</div><div class="l">Crítica</div></div>'+
+      '<div class="stat high"><div class="n mono">'+s.high+'</div><div class="l">Alta</div></div>'+
+      '<div class="stat med"><div class="n mono">'+s.med+'</div><div class="l">Média</div></div>'+
+      '<div class="stat"><div class="n mono">'+s.low+'</div><div class="l">Baixa</div></div>'+
+      '<div class="stat done"><div class="n mono">'+pct+'%</div><div class="l">Concluído</div></div>';
+  }
+
+  function populateSelects(){
+    var fCat = document.getElementById('f-categoria');
+    fCat.innerHTML = '<option value="">Todas as categorias</option>' + CATEGORIAS.map(function(c){return '<option>'+c+'</option>';}).join('');
+    var npCat = document.getElementById('np-categoria');
+    npCat.innerHTML = CATEGORIAS.map(function(c){return '<option>'+c+'</option>';}).join('');
+
+    var fPessoa = document.getElementById('f-pessoa');
+    fPessoa.innerHTML = '<option value="">Quem relatou: todos</option>' + PESSOAS.map(function(p){return '<option>'+p+'</option>';}).join('') + '<option>A definir</option>';
+    var npPessoa = document.getElementById('np-relator');
+    npPessoa.innerHTML = PESSOAS.map(function(p){return '<option'+(p==="Ivan"?" selected":"")+'>'+p+'</option>';}).join('') + '<option>A definir</option>';
+  }
+
+  function matchesFilters(p){
+    var f = state.filters;
+    var g = savedOf(p);
+    if(f.categoria && g.categoria!==f.categoria) return false;
+    if(f.pessoa && (g.relator||"A definir")!==f.pessoa) return false;
+    if(f.status && g.status!==f.status) return false;
+    if(f.origem && g.origem!==f.origem) return false;
+    if(f.busca){
+      var q = f.busca.toLowerCase();
+      var hay = (p.titulo+" "+p.descricao+" "+p.evidencia+" "+p.categoria).toLowerCase();
+      if(hay.indexOf(q)===-1) return false;
+    }
+    return true;
+  }
+
+  function acaoRow(pid, a, idx){
+    var checked = a.feito ? 'checked' : '';
+    var cls = a.feito ? 'acao-texto done' : 'acao-texto';
+    return '<div class="acao" data-pid="'+pid+'" data-idx="'+idx+'">'+
+      '<input type="checkbox" class="acao-feito" '+checked+'>'+
+      '<div>'+
+        '<input type="text" class="'+cls+'" value="'+escAttr(a.texto)+'" placeholder="Descreva a ação…">'+
+        '<div class="acao-meta">'+
+          '<input type="text" class="acao-resp" value="'+escAttr(a.responsavel||"")+'" placeholder="responsável">'+
+          '<input type="date" class="acao-prazo" value="'+escAttr(a.prazo||"")+'">'+
+          '<button type="button" class="acao-del" title="Remover ação">&times;</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function escHtml(s){ return String(s||"").replace(/[&<>]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function escAttr(s){ return String(s||"").replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+
+  function pointCard(p){
+    var pri = prioridadeDe(p.importancia, p.urgencia);
+    var isOpen = state.openId === p.id;
+    var isDirty = !!state.dirty[p.id];
+    var ci = catIndex(p.categoria);
+    var statusCls = p.status==="Em andamento"?"progress":p.status==="Concluído"?"done":"";
+    var doneAcoes = p.acoes.filter(function(a){return a.feito;}).length;
+    var acoesLabel = p.acoes.length ? (doneAcoes+'/'+p.acoes.length+' ações') : 'sem ações';
+
+    var relator = p.relator || "A definir";
+    var pk = pessoaKey(relator);
+
+    var html = '<article class="point'+(isOpen?' open':'')+'" data-point-id="'+p.id+'">';
+    html += '<button type="button" class="point-row" data-role="toggle" aria-expanded="'+(isOpen?'true':'false')+'">';
+    html += '<span class="chev">&#9656;</span>';
+    html += '<span class="avatar" title="Relatado por '+escAttr(relator)+'" style="color:var(--p-'+pk+');background:var(--p-'+pk+'-soft)">'+pessoaIniciais(relator)+'</span>';
+    html += '<span class="p-title">'+escHtml(p.titulo)+'</span>';
+    html += '<span class="tag" style="color:var(--cat-'+ci+');background:var(--cat-'+ci+'-soft)">'+escHtml(p.categoria)+'</span>';
+    html += '<span class="badge '+priClass(pri)+'">'+pri+'</span>';
+    html += '<span class="status-pill '+statusCls+'"><span class="dot"></span>'+p.status+'</span>';
+    html += '<span class="acoes-count">'+acoesLabel+'</span>';
+    html += '<span class="dirty-dot-cell">'+(isDirty?'<span class="dirty-dot" title="Alterações não salvas"></span>':'')+'</span>';
+    html += '</button>';
+
+    html += '<div class="point-body"><div class="body-grid">';
+
+    html += '<div class="desc-col">';
+    html += '<div class="desc"><textarea data-field="descricao" rows="3">'+escHtml(p.descricao)+'</textarea></div>';
+    html += '<div class="evidence"><b>Trecho da reunião</b>'+escHtml(p.evidencia)+'</div>';
+
+    html += '<div class="field-row">';
+    html += '<div class="field"><label>Quem relatou</label><select data-field="relator">'+PESSOAS.concat(["A definir"]).map(function(o){return '<option'+(o===relator?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div>';
+    html += '<div class="field"><label>Categoria</label><select data-field="categoria">'+CATEGORIAS.map(function(c){return '<option'+(c===p.categoria?' selected':'')+'>'+c+'</option>';}).join('')+'</select></div>';
+    html += '<div class="field"><label>Origem</label><select data-field="origem">'+['Transcrição','Caderno Ivan','Ambos'].map(function(o){return '<option'+(o===p.origem?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div>';
+    html += '<div class="field"><label>Status</label><select data-field="status">'+['Não iniciado','Em andamento','Concluído'].map(function(o){return '<option'+(o===p.status?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div>';
+    html += '</div>';
+
+    html += '<div class="field-row">';
+    html += '<div class="field"><label>Importância</label><select data-field="importancia">'+['Alta','Média','Baixa'].map(function(o){return '<option'+(o===p.importancia?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div>';
+    html += '<div class="field"><label>Urgência</label><select data-field="urgencia">'+['Alta','Média','Baixa'].map(function(o){return '<option'+(o===p.urgencia?' selected':'')+'>'+o+'</option>';}).join('')+'</select></div>';
+    html += '<div class="field"><label>Prioridade (calculada)</label><span class="badge '+priClass(pri)+'" style="align-self:center;">'+pri+'</span></div>';
+    html += '</div>';
+
+    html += '<div class="notas-field"><label style="font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-faint);font-weight:600;">Notas adicionais</label><textarea data-field="notas" placeholder="Observações, links, contexto extra…">'+escHtml(p.notas)+'</textarea></div>';
+    html += '</div>';
+
+    html += '<div class="acoes-block">';
+    html += '<div class="acoes-head"><h4>Ações necessárias</h4></div>';
+    html += '<div class="acoes-list">'+p.acoes.map(function(a,idx){return acaoRow(p.id,a,idx);}).join('')+'</div>';
+    html += '<button type="button" class="add-acao" data-role="add-acao">+ adicionar ação</button>';
+    html += '</div>';
+
+    html += '</div>'; // fim body-grid
+
+    html += '<div class="point-footer">';
+    html += '<span class="save-status'+(isDirty?'':' ok')+'">'+(isDirty?'<span class="dirty-dot"></span>alterações não salvas':'tudo salvo')+'</span>';
+    html += '<span class="footer-actions">';
+    html += '<button type="button" class="del-point" data-role="del-point">remover ponto</button>';
+    html += '<button type="button" class="save-btn" data-role="save-point"'+(isDirty?'':' disabled')+'>Salvar alterações</button>';
+    html += '</span>';
+    html += '</div>';
+
+    html += '</div>'; // fim point-body
+    html += '</article>';
+    return html;
+  }
+
+  function render(){
+    renderStats();
+    var filtered = state.points.filter(matchesFilters);
+    var main = document.getElementById('main');
+
+    if(!filtered.length){
+      main.innerHTML = '<div class="empty">Nenhum ponto encontrado com esses filtros.</div>';
+      return;
+    }
+
+    var groups = {};
+    var order = [];
+    if(state.groupBy==="categoria"){
+      CATEGORIAS.forEach(function(c){ groups[c]=[]; order.push(c); });
+      filtered.forEach(function(p){ groups[savedOf(p).categoria].push(p); });
+    } else if(state.groupBy==="pessoa"){
+      PESSOAS.concat(["A definir"]).forEach(function(p){ groups[p]=[]; order.push(p); });
+      filtered.forEach(function(p){ groups[savedOf(p).relator||"A definir"].push(p); });
+    } else {
+      ["Crítica","Alta","Média","Baixa"].forEach(function(pr){ groups[pr]=[]; order.push(pr); });
+      filtered.forEach(function(p){ var g=savedOf(p); groups[prioridadeDe(g.importancia,g.urgencia)].push(p); });
+    }
+
+    var html = "";
+    order.forEach(function(key){
+      var list = groups[key];
+      if(!list.length) return;
+      list.sort(function(a,b){
+        var ga = savedOf(a), gb = savedOf(b);
+        var pa = PRI_RANK[prioridadeDe(ga.importancia,ga.urgencia)], pb = PRI_RANK[prioridadeDe(gb.importancia,gb.urgencia)];
+        if(state.groupBy!=="prioridade" && pa!==pb) return pb-pa;
+        return ga.ordem-gb.ordem;
+      });
+      var swatchColor, label;
+      if(state.groupBy==="categoria"){
+        swatchColor = 'var(--cat-'+catIndex(key)+')';
+        label = key;
+      } else if(state.groupBy==="pessoa"){
+        swatchColor = 'var(--p-'+pessoaKey(key)+')';
+        label = key;
+      } else {
+        swatchColor = 'var(--'+priClass(key)+')';
+        label = key;
+      }
+      html += '<section class="group">';
+      html += '<div class="group-head"><span class="swatch" style="background:'+swatchColor+'"></span><h2>'+label+'</h2><span class="count mono">'+list.length+'</span></div>';
+      html += '<div class="list">'+list.map(pointCard).join('')+'</div>';
+      html += '</section>';
+    });
+
+    main.innerHTML = html;
+  }
+
+  /* ---------------- edição local (rascunho) ---------------- */
+  function updateLocal(id, patch){
+    var p = state.points.find(function(x){return x.id===id;});
+    if(!p) return;
+    Object.assign(p, patch);
+    state.dirty[id] = true;
+    render();
+  }
+
+  /* ---------------- gravação no banco (botão Salvar) ---------------- */
+  function savePoint(id){
+    var p = state.points.find(function(x){return x.id===id;});
+    if(!p) return;
+
+    var article = document.querySelector('.point[data-point-id="'+id+'"]');
+    var btn = article ? article.querySelector('[data-role="save-point"]') : null;
+    if(btn){ btn.disabled = true; btn.textContent = 'Salvando…'; }
+
+    sbFetch('pontos?id=eq.' + encodeURIComponent(id), {method:'PATCH', body: pointToRow(p)}).then(function(res){
+      if(res.error){
+        if(btn){ btn.disabled = false; btn.textContent = 'Erro ao salvar — tentar de novo'; }
+        return;
+      }
+      delete state.dirty[id];
+      state.saved[id] = savedSnapshot(p);
+      render();
+    });
+  }
+
+  function persistMeta(patch){
+    Object.assign(state.meta, patch);
+    sbFetch('meta?id=eq.info', {method:'PATCH', body:{
+      data_reuniao: state.meta.dataReuniao,
+      participantes: state.meta.participantes,
+      titulo: state.meta.titulo
+    }}).then(function(){});
+  }
+
+  /* ---------------- eventos (delegados em #main, ligados uma única vez) ---------------- */
+  function togglePoint(id){
+    state.openId = (state.openId === id) ? null : id;
+    render();
+  }
+
+  function setupMainDelegation(){
+    var main = document.getElementById('main');
+
+    // enquanto o usuário está com o botão do mouse/dedo pressionado sobre a
+    // lista, qualquer render() vindo de uma atualização em tempo real do banco
+    // (outro colega editando ao mesmo tempo) é adiado até soltar — evita que o
+    // elemento pressionado seja substituído (e o clique perdido) no meio do gesto
+    main.addEventListener('pointerdown', function(e){
+      if(e.target.closest('[data-role="toggle"]')) state._pointerActive = true;
+    });
+    ['pointerup','pointercancel'].forEach(function(evt){
+      document.addEventListener(evt, function(){
+        if(!state._pointerActive) return;
+        state._pointerActive = false;
+        setTimeout(function(){
+          if(state._renderPending){ state._renderPending = false; render(); }
+        }, 0);
+      });
+    });
+
+    main.addEventListener('click', function(e){
+      var toggleEl = e.target.closest('[data-role="toggle"]');
+      if(toggleEl){
+        togglePoint(toggleEl.closest('.point').dataset.pointId);
+        return;
+      }
+
+      var delBtn = e.target.closest('[data-role="del-point"]');
+      if(delBtn){
+        var dPt = delBtn.closest('.point');
+        var dId = dPt.dataset.pointId;
+        if(!confirm('Remover este ponto do painel?')) return;
+        state.points = state.points.filter(function(x){return x.id!==dId;});
+        delete state.dirty[dId];
+        delete state.saved[dId];
+        if(state.openId===dId) state.openId = null;
+        render();
+        sbFetch('pontos?id=eq.' + encodeURIComponent(dId), {method:'DELETE'}).then(function(){});
+        return;
+      }
+
+      var saveBtn = e.target.closest('[data-role="save-point"]');
+      if(saveBtn){
+        var sPt = saveBtn.closest('.point');
+        savePoint(sPt.dataset.pointId);
+        return;
+      }
+
+      var addAcaoBtn = e.target.closest('[data-role="add-acao"]');
+      if(addAcaoBtn){
+        var aPt = addAcaoBtn.closest('.point');
+        var aId = aPt.dataset.pointId;
+        var aP = state.points.find(function(x){return x.id===aId;});
+        var aAcoes = aP.acoes.slice();
+        aAcoes.push({texto:"",responsavel:"",prazo:"",feito:false});
+        updateLocal(aId, {acoes:aAcoes});
+        return;
+      }
+
+      var delAcaoBtn = e.target.closest('.acao-del');
+      if(delAcaoBtn){
+        var row = delAcaoBtn.closest('.acao');
+        var rPt = delAcaoBtn.closest('.point');
+        var rId = rPt.dataset.pointId;
+        var rIdx = parseInt(row.dataset.idx, 10);
+        var rP = state.points.find(function(x){return x.id===rId;});
+        var rAcoes = rP.acoes.slice();
+        rAcoes.splice(rIdx,1);
+        updateLocal(rId, {acoes:rAcoes});
+        return;
+      }
+    });
+
+    main.addEventListener('change', function(e){
+      var t = e.target;
+
+      if(t.matches('select[data-field]')){
+        var sPt2 = t.closest('.point');
+        var sId2 = sPt2.dataset.pointId;
+        var patch = {}; patch[t.dataset.field] = t.value;
+        updateLocal(sId2, patch);
+        return;
+      }
+
+      if(t.matches('.acao-feito')){
+        var row2 = t.closest('.acao');
+        var pt2 = t.closest('.point');
+        var id2 = pt2.dataset.pointId;
+        var idx2 = parseInt(row2.dataset.idx, 10);
+        var p2 = state.points.find(function(x){return x.id===id2;});
+        var acoes2 = p2.acoes.slice();
+        acoes2[idx2] = Object.assign({}, acoes2[idx2], {feito:t.checked});
+        updateLocal(id2, {acoes:acoes2});
+        return;
+      }
+
+      if(t.matches('.acao-prazo')){
+        var row3 = t.closest('.acao');
+        var pt3 = t.closest('.point');
+        var id3 = pt3.dataset.pointId;
+        var idx3 = parseInt(row3.dataset.idx, 10);
+        var p3 = state.points.find(function(x){return x.id===id3;});
+        var acoes3 = p3.acoes.slice();
+        acoes3[idx3] = Object.assign({}, acoes3[idx3], {prazo:t.value});
+        updateLocal(id3, {acoes:acoes3});
+        return;
+      }
+    });
+
+    main.addEventListener('focusout', function(e){
+      var t = e.target;
+
+      if(t.matches('textarea[data-field]')){
+        var tPt = t.closest('.point');
+        var tId = tPt.dataset.pointId;
+        var patch = {}; patch[t.dataset.field] = t.value;
+        updateLocal(tId, patch);
+        return;
+      }
+
+      if(t.matches('.acao-texto')){
+        var row4 = t.closest('.acao');
+        var pt4 = t.closest('.point');
+        var id4 = pt4.dataset.pointId;
+        var idx4 = parseInt(row4.dataset.idx, 10);
+        var p4 = state.points.find(function(x){return x.id===id4;});
+        var acoes4 = p4.acoes.slice();
+        acoes4[idx4] = Object.assign({}, acoes4[idx4], {texto:t.value});
+        updateLocal(id4, {acoes:acoes4});
+        return;
+      }
+
+      if(t.matches('.acao-resp')){
+        var row5 = t.closest('.acao');
+        var pt5 = t.closest('.point');
+        var id5 = pt5.dataset.pointId;
+        var idx5 = parseInt(row5.dataset.idx, 10);
+        var p5 = state.points.find(function(x){return x.id===id5;});
+        var acoes5 = p5.acoes.slice();
+        acoes5[idx5] = Object.assign({}, acoes5[idx5], {responsavel:t.value});
+        updateLocal(id5, {acoes:acoes5});
+        return;
+      }
+    });
+  }
+
+  document.getElementById('group-toggle').addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if(!btn) return;
+    document.querySelectorAll('#group-toggle button').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    state.groupBy = btn.dataset.g;
+    render();
+  });
+
+  document.getElementById('f-categoria').addEventListener('change', function(){ state.filters.categoria=this.value; render(); });
+  document.getElementById('f-pessoa').addEventListener('change', function(){ state.filters.pessoa=this.value; render(); });
+  document.getElementById('f-status').addEventListener('change', function(){ state.filters.status=this.value; render(); });
+  document.getElementById('f-origem').addEventListener('change', function(){ state.filters.origem=this.value; render(); });
+  document.getElementById('f-busca').addEventListener('input', function(){ state.filters.busca=this.value; render(); });
+
+  document.getElementById('open-new').addEventListener('click', function(){
+    document.getElementById('new-point-form').classList.add('open');
+    document.getElementById('np-titulo').focus();
+  });
+  document.getElementById('np-cancel').addEventListener('click', function(){
+    document.getElementById('new-point-form').classList.remove('open');
+  });
+
+  document.getElementById('new-point-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var titulo = document.getElementById('np-titulo').value.trim();
+    if(!titulo) return;
+    var maxOrdem = state.points.reduce(function(m,p){return Math.max(m,p.ordem);},0);
+    var novo = {
+      ordem: maxOrdem+1,
+      categoria: document.getElementById('np-categoria').value,
+      titulo: titulo,
+      descricao: document.getElementById('np-descricao').value,
+      evidencia: "",
+      origem: document.getElementById('np-origem').value,
+      relator: document.getElementById('np-relator').value,
+      importancia: document.getElementById('np-importancia').value,
+      urgencia: document.getElementById('np-urgencia').value,
+      status: "Não iniciado",
+      notas: "",
+      acoes: []
+    };
+    var newId = "p-" + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+    novo.id = newId;
+    state.points.push(novo);
+    state.saved[novo.id] = savedSnapshot(novo);
+    state.openId = novo.id;
+    render();
+
+    var payload = Object.assign({id:newId}, pointToRow(novo));
+    sbFetch('pontos', {method:'POST', body: payload}).then(function(res){
+      if(res.error){
+        showErrorBanner('não consegui salvar o novo ponto no banco — ' + res.error.message);
+      }
+    });
+
+    e.target.reset();
+    document.getElementById('new-point-form').classList.remove('open');
+  });
+
+  ['meta-participantes','meta-data'].forEach(function(elId){
+    var el = document.getElementById(elId);
+    el.addEventListener('blur', function(){
+      var field = elId==='meta-participantes' ? 'participantes' : 'dataReuniao';
+      var patch = {}; patch[field] = el.textContent.trim();
+      persistMeta(patch);
+    });
+    el.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); el.blur(); } });
+  });
+
+  /* ---------------- exportar dados (CSV) ---------------- */
+  function csvEscape(v){
+    var s = String(v==null?"":v);
+    if(/[",\n;]/.test(s)) s = '"'+s.replace(/"/g,'""')+'"';
+    return s;
+  }
+  document.getElementById('export-csv').addEventListener('click', function(){
+    var cols = ['id','titulo','categoria','relator','importancia','urgencia','status','origem','ordem','descricao','evidencia','notas','acoes'];
+    var rows = [cols.join(';')];
+    state.points.slice().sort(function(a,b){return a.ordem-b.ordem;}).forEach(function(p){
+      var acoesTxt = p.acoes.map(function(a){return a.texto + (a.responsavel?(' ('+a.responsavel+')'):'') + (a.feito?' [feito]':'');}).join(' | ');
+      rows.push(cols.map(function(c){
+        return csvEscape(c==='acoes' ? acoesTxt : p[c]);
+      }).join(';'));
+    });
+    var csv = '﻿' + rows.join('\r\n');
+    var blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'forum-pentago-pontos-'+new Date().toISOString().slice(0,10)+'.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  });
+
+  function setSyncFlag(online, label){
+    var el = document.getElementById('sync-flag');
+    el.classList.toggle('offline', !online);
+    el.innerHTML = '<span class="dot"></span>' + (label || (online ? 'conectado — alterações salvas em tempo real' : 'sem conexão com o banco'));
+    document.getElementById('last-sync').textContent = online ? ('sincronizado ' + new Date().toLocaleTimeString('pt-BR')) : '';
+  }
+
+  /* ---------------- inicialização ---------------- */
+  populateSelects();
+  setupMainDelegation();
+  setSyncFlag(false, 'conectando…');
+
+  function applyIncomingPoints(rows){
+    var live = rows.map(rowToPoint);
+    live.forEach(function(p){ state.saved[p.id] = savedSnapshot(p); });
+    var merged = live.map(function(p){
+      if(state.dirty[p.id]){
+        var local = state.points.find(function(x){return x.id===p.id;});
+        if(local) return local;
+      }
+      return p;
+    });
+    var mergedJSON = JSON.stringify(merged);
+    if(mergedJSON === state._lastPointsJSON) return;
+    state._lastPointsJSON = mergedJSON;
+    state.points = merged;
+    if(state._pointerActive){ state._renderPending = true; return; }
+    render();
+  }
+
+  /* ---------------- sincronização por polling ----------------
+     Sem biblioteca de realtime, a colaboração entre as 5 pessoas usa
+     atualização periódica em vez de push instantâneo — troca aceitável
+     para um painel interno de uso ocasional, e muito mais robusta. */
+  function pollMeta(){
+    sbFetch('meta?select=*&id=eq.info', {single:true}).then(function(metaRes){
+      if(metaRes.data){
+        var changed = false;
+        if(metaRes.data.participantes && metaRes.data.participantes !== state.meta.participantes){
+          state.meta.participantes = metaRes.data.participantes; changed = true;
+        }
+        if(metaRes.data.data_reuniao && metaRes.data.data_reuniao !== state.meta.dataReuniao){
+          state.meta.dataReuniao = metaRes.data.data_reuniao; changed = true;
+        }
+        if(changed){
+          document.getElementById('meta-participantes').textContent = state.meta.participantes;
+          document.getElementById('meta-data').textContent = state.meta.dataReuniao;
+        }
+      }
+    });
+  }
+
+  function pollPoints(){
+    sbFetch('pontos?select=*&order=ordem.asc').then(function(res){
+      if(res.error){ setSyncFlag(false, 'erro ao sincronizar — tentando de novo'); return; }
+      applyIncomingPoints(res.data || []);
+      state.online = true;
+      setSyncFlag(true);
+    });
+  }
+
+  (async function init(){
+    try{
+      var res = await sbFetch('pontos?select=*&order=ordem.asc');
+      if(res.error){ setSyncFlag(false, 'erro ao carregar dados'); showErrorBanner(res.error.message); return; }
+      applyIncomingPoints(res.data || []);
+
+      var metaRes = await sbFetch('meta?select=*&id=eq.info', {single:true});
+      if(metaRes.data){
+        state.meta.participantes = metaRes.data.participantes || state.meta.participantes;
+        state.meta.dataReuniao = metaRes.data.data_reuniao || state.meta.dataReuniao;
+        state.meta.titulo = metaRes.data.titulo || state.meta.titulo;
+        document.getElementById('meta-participantes').textContent = state.meta.participantes;
+        document.getElementById('meta-data').textContent = state.meta.dataReuniao;
+      }
+
+      state.online = true;
+      setSyncFlag(true);
+
+      setInterval(pollPoints, 4000);
+      setInterval(pollMeta, 4000);
+
+    }catch(err){
+      setSyncFlag(false, 'erro de conexão');
+      showErrorBanner(err && err.message ? err.message : String(err));
+    }
+  })();
+
+})();
+</script>
+</body>
+</html>
